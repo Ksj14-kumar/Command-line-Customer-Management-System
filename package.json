@@ -1,0 +1,21 @@
+{
+  "name": "commanr-line-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "commander": "^9.4.0",
+    "dotenv": "^16.0.2",
+    "inquirer": "^8.2.4",
+    "mongoose": "^6.6.2"
+  }
+}
