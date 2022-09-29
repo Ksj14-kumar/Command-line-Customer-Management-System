@@ -6,7 +6,7 @@
   "preferGlobal": true,
   "bin": "./commands.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "node ./commands.js -h"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "commander": "^9.4.0",
     "dotenv": "^16.0.2",
     "inquirer": "^8.2.4",

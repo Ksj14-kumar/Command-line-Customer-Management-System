@@ -5,7 +5,6 @@ const inquire = require("inquirer")
 const { AddUser, findUser, deleteUser, AllCustomer, update } = require("./db");
 
 
-
 const isInt = (value) => {
     console.log(typeof value)
     console.log(value)
@@ -158,10 +157,10 @@ command
     .action(() => {
         inquire.prompt(questions)
             .then((result) => {
-                console.log({ result })
                 AddUser(result)
             }).catch((err) => {
                 console.log({ err })
+                throw new Error(err)
             });
     })
 command

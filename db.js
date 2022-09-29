@@ -1,13 +1,18 @@
 const User = require("./Model")
 require("dotenv").config()
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt")
 const URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/CLI"
 mongoose.connect(URI, (err) => {
     if (err) throw new Error(err)
 })
 module.exports.AddUser = async (value) => {
     try {
-        const userInfo = { ...value, gender: value.gender[0] }
+        const userInfo = {
+            ...value, gender: value.gender[0],
+            password: await bcrypt.hash(value.password, 16)
+
+        }
         const res = await new User(userInfo)
         await res.save()
         console.info("A user Successfull added")
