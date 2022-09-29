@@ -1,8 +1,10 @@
 {
-  "name": "commanr-line-application",
+  "name": "cms",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "preferGlobal": true,
+  "bin": "./commands.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

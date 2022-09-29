@@ -1,7 +1,10 @@
+#!/usr/bin/env node
 const { Command } = require("commander");
 const command = new Command()
 const inquire = require("inquirer")
-const { AddUser, findUser, deleteUser } = require("./db")
+const { AddUser, findUser, deleteUser, AllCustomer, update } = require("./db")
+
+
 const questions = [{
     name: "name",
     type: "input",
@@ -62,12 +65,13 @@ const questions = [{
 ]
 
 
+
 command
     .name("Command line Customer management system")
-    .description("Costomer Management System")
+    .description("Customer Management System")
     .version("1.0.0")
 command
-    .command("Add")
+    .command("Add ")
     .description("add a new Customer")
     .alias("a")
     .action(() => {
@@ -82,17 +86,35 @@ command
 command
     .command("Find <name>")
     .alias("f")
-    .description("find a user by name or last name or email")
+    .description("find a user by name")
     .action((name) => {
         findUser(name)
     })
-
 command
     .command("Delete <_id>")
-    .alias("-d")
+    .alias("d")
     .description("delete a user")
     .action(id => {
         deleteUser(id)
     })
+command
+    .command("list")
+    .alias("l")
+    .description("all customer list")
+    .action(() => {
+        AllCustomer()
+    })
 
+command
+    .command("update <_id>")
+    .alias("u")
+    .description("update customer")
+    .action((id) => {
+        inquire.prompt(questions).then(d => {
+            update(id, d)
+        })
+            .catch(err => {
+                process.stdout.write(err)
+            })
+    })
 command.parse(process.argv)
