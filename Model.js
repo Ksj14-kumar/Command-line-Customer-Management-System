@@ -10,5 +10,5 @@ const Schema = new mongoose.Schema({
     email: String,
     password: String
 })
-
-module.exports = new mongoose.model("CLI", Schema)
+const CollectionName = process.env.NODE_ENV === "dev" ? "CMS_DEV" : "CMS-prod"
+module.exports = new mongoose.model(CollectionName, Schema)
